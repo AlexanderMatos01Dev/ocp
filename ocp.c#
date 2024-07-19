@@ -67,3 +67,20 @@ public class Program
         Console.WriteLine("Subscription successful for all courses.");
     }
 }
+
+
+
+
+//Explicación del Código
+
+    Clase Abstracta Course: Define la estructura básica para todos los tipos de cursos con propiedades CourseId y Title, y un método abstracto Subscribe que debe ser implementado por las clases derivadas.
+
+    Clases OnlineCourse y OfflineCourse: Implementan el método Subscribe para suscribir a estudiantes a cursos en línea y presenciales respectivamente. No modificamos estas clases para agregar nuevos tipos de cursos, cumpliendo así con el principio de abierto/cerrado.
+
+    Nueva Clase HybridCourse: Hereda de Course y proporciona su propia implementación del método Subscribe para manejar la suscripción a cursos híbridos.
+
+    Clase Student: Representa a un estudiante con propiedades StudentId y Name.
+
+    Clase Program: Contiene el método Main, donde se crean instancias de los diferentes tipos de cursos y se suscribe a un estudiante a estos cursos. Esto demuestra cómo extender la funcionalidad sin modificar las clases existentes.
+
+Con esta estructura, hemos aplicado correctamente el principio de abierto/cerrado, permitiendo la extensión de la funcionalidad de suscripción a cursos sin modificar las clases existentes.
