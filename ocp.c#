@@ -1,0 +1,69 @@
+using System;
+
+public abstract class Course
+{
+    public int CourseId { get; set; }
+    public string Title { get; set; }
+    
+    // Método abstracto que será implementado por las clases derivadas
+    public abstract void Subscribe(Student std);
+}
+
+public class OnlineCourse : Course
+{
+    // Implementación del método Subscribe para cursos en línea
+    public override void Subscribe(Student std)
+    {
+        Console.WriteLine($"{std.Name} has been subscribed to the online course: {Title}");
+        // Lógica para suscribir a un curso en línea
+    }
+}
+
+public class OfflineCourse : Course
+{
+    // Implementación del método Subscribe para cursos presenciales
+    public override void Subscribe(Student std)
+    {
+        Console.WriteLine($"{std.Name} has been subscribed to the offline course: {Title}");
+        // Lógica para suscribir a un curso presencial
+    }
+}
+
+// Nueva clase HybridCourse que sigue el principio de abierto/cerrado
+public class HybridCourse : Course
+{
+    // Implementación del método Subscribe para cursos híbridos
+    public override void Subscribe(Student std)
+    {
+        Console.WriteLine($"{std.Name} has been subscribed to the hybrid course: {Title}");
+        // Lógica para suscribir a un curso híbrido (combinación de en línea y presencial)
+    }
+}
+
+public class Student
+{
+    public int StudentId { get; set; }
+    public string Name { get; set; }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        // Crear una instancia de Student
+        Student student = new Student { StudentId = 1, Name = "John Doe" };
+
+        // Crear instancias de diferentes tipos de cursos
+        Course onlineCourse = new OnlineCourse { CourseId = 101, Title = "C# Programming" };
+        Course offlineCourse = new OfflineCourse { CourseId = 102, Title = "Data Structures" };
+        Course hybridCourse = new HybridCourse { CourseId = 103, Title = "Advanced Algorithms" };
+
+        // Suscribir al estudiante a los diferentes cursos
+        onlineCourse.Subscribe(student);
+        offlineCourse.Subscribe(student);
+        hybridCourse.Subscribe(student);
+
+        // Mensaje de confirmación
+        Console.WriteLine("Subscription successful for all courses.");
+    }
+}
